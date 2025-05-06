@@ -38,6 +38,8 @@
             // TODO
             // save the product to the database
             session.Store(product);
+
+            // cancellation token is used to cancel the operation if it takes too long
             await session.SaveChangesAsync(cancellationToken);
 
 
