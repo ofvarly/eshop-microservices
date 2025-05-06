@@ -12,7 +12,7 @@
     // This is useful to return the ID of the product to the client after it has been created.
     public record CreateProductResult(Guid Id);
 
-    //IDocumentSession is a Marten interface that represents a session with the database.
+    // IDocumentSession is a Marten interface that represents a session with the database.
     // It is used to perform CRUD operations on the database.
     // Why not use a repository pattern?
     // The repository pattern is an abstraction that provides a way to access data from a data source.
