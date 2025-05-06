@@ -19,7 +19,7 @@ namespace Catalog.API.Products.GetProducts
                 .Produces<GetProductsResponse>(StatusCodes.Status200OK)
                 .ProducesProblem(StatusCodes.Status400BadRequest)
                 .WithSummary("Get all products")
-                .WithDescription("Get all products");
+                .WithDescription("Get products");
         }
     }
 }
