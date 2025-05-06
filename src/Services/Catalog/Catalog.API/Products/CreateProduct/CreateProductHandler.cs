@@ -1,5 +1,6 @@
 ﻿using BuildingBlocks.CQRS;
 using Catalog.API.Models;
+using Marten;
 
 namespace Catalog.API.Products.CreateProduct
 {
@@ -15,7 +16,13 @@ namespace Catalog.API.Products.CreateProduct
     // This is useful to return the ID of the product to the client after it has been created.
     public record CreateProductResult(Guid Id);
 
-    internal class CreateProductCommandHandler : ICommandHandler<CreateProductCommand, CreateProductResult>
+    //IDocumentSession is a Marten interface that represents a session with the database.
+    // It is used to perform CRUD operations on the database.
+    // Why not use a repository pattern?
+    // The repository pattern is an abstraction that provides a way to access data from a data source.
+    // It is used to decouple the data access logic from the business logic.
+    // The reason we don't use a repository pattern is that Marten provides a built-in way to access data from the database.
+    internal class CreateProductCommandHandler(IDocumentSession session) : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
@@ -34,8 +41,11 @@ namespace Catalog.API.Products.CreateProduct
 
             // TODO
             // save the product to the database
+            session.Store(product);
+            await session.SaveChangesAsync(cancellationToken);
 
-            return new CreateProductResult(Guid.NewGuid()); // Simulate product creation and return a new ID.
+
+            return new CreateProductResult(product.Id); // Simulate product creation and return a new ID.
         }
     }
 
