@@ -1,8 +1,4 @@
-﻿using BuildingBlocks.CQRS;
-using Catalog.API.Models;
-using Marten;
-
-namespace Catalog.API.Products.CreateProduct
+﻿namespace Catalog.API.Products.CreateProduct
 {
     // Why record?
     // A record is a reference type that provides built-in functionality for encapsulating data.
