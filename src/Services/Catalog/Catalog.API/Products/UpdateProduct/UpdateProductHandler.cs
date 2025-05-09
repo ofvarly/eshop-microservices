@@ -30,7 +30,7 @@ namespace Catalog.API.Products.UpdateProduct
 
             session.Update(product);
 
-            await session.SaveChangesAsync();
+            await session.SaveChangesAsync(cancellationToken);
 
             return new UpdateProductResult(true);
         }

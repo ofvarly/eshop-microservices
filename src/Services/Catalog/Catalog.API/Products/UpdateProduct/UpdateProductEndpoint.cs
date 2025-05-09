@@ -11,7 +11,9 @@ namespace Catalog.API.Products.UpdateProduct
             app.MapPut("/products", async (UpdateProductRequest request, ISender sender) =>
             {
                 var command = request.Adapt<UpdateProductCommand>(); // Mapster
+
                 var result = await sender.Send(command); // MediatR
+                
                 var response = result.Adapt<UpdateProductResponse>(); // Mapster
 
                 return Results.Ok(response); // return the response object
