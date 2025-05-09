@@ -1,7 +1,7 @@
 
 namespace Catalog.API.Products.GetProducts
 {
-    public record GetProductsResponse(IEnumerable<Product> Products);
+    public record GetProductsResponse(IEnumerable<Product> Products); // this response output should match with the GetProductsResult to map correctly
 
     public class GetProductsEndpoint : ICarterModule
     {
