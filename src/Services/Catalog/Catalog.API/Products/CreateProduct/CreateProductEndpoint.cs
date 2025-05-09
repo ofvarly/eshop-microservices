@@ -20,7 +20,7 @@
                 var result = await sender.Send(command);
 
                 // We use Mapster to map the result to the response object.
-                // Result is defined in the CreateProductHandler.cs file.
+                // Result is defined in the CreateProductHandler.cs file
                 var response = result.Adapt<CreateProductResponse>();
 
                 // We return the response object with a 201 Created status code and the location of the created product.
