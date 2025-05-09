@@ -9,9 +9,9 @@ namespace Catalog.API.Products.GetProducts
         {
             app.MapGet("/products", async (ISender sender) =>
             {
-                var result = await sender.Send(new GetProductsQuery());
+                var result = await sender.Send(new GetProductsQuery()); // MediatR
 
-                var response = result.Adapt<GetProductsResponse>();
+                var response = result.Adapt<GetProductsResponse>(); // Mapster
 
                 return Results.Ok(response);
             })
