@@ -36,12 +36,10 @@ namespace Catalog.API.Products.CreateProduct
     // The repository pattern is an abstraction that provides a way to access data from a data source.
     // It is used to decouple the data access logic from the business logic.
     // The reason we don't use a repository pattern is that Marten provides a built-in way to access data from the database.
-    internal class CreateProductCommandHandler(IDocumentSession session, ILogger<CreateProductCommandHandler> logger) : ICommandHandler<CreateProductCommand, CreateProductResult>
+    internal class CreateProductCommandHandler(IDocumentSession session) : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
-            logger.LogInformation("CreateProductCommandHandler.Handle called with {@Command}", command);
-
             // create a new product with the data from the command
             // save to database
             // return CreateProductResult result
