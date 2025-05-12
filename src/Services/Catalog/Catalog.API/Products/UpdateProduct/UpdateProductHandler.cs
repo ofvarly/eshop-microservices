@@ -1,4 +1,7 @@
 ﻿
+using Catalog.API.Products.CreateProduct;
+using Mapster;
+
 namespace Catalog.API.Products.UpdateProduct
 {
     public record UpdateProductCommand(Guid Id, string Name, List<string> Category, string Description, string ImageFile, decimal Price)
@@ -17,9 +20,19 @@ namespace Catalog.API.Products.UpdateProduct
         }
     }
 
+
+
     internal class UpdateProductCommandHandler(IDocumentSession session, ILogger<UpdateProductCommandHandler> logger)
         : ICommandHandler<UpdateProductCommand, UpdateProductResult>
     {
+        //public static void ConfigureMapping()
+        //{
+        //    // Product → UpdateProductCommand mapleme konfigürasyonu
+        //    TypeAdapterConfig<Product, UpdateProductCommand>
+        //        .NewConfig()
+        //        .Ignore(dest => dest.Id); // Id özelliğini hariç tut
+        //}
+
         public async Task<UpdateProductResult> Handle(UpdateProductCommand command, CancellationToken cancellationToken)
         {
             logger.LogInformation("UpdateProductCommandHandler.Handle called with {@Command}", command);
@@ -27,11 +40,10 @@ namespace Catalog.API.Products.UpdateProduct
             var product = await session.LoadAsync<Product>(command.Id, cancellationToken);
         
             if (product is null)
-            {
-                throw new ProductNotFoundException();
-            }
+                throw new ProductNotFoundException(command.Id);
 
-            // mapper didnt work probably because of the id property
+            // Configure Mapping'e gerek olmadan doğru bir şekilde mapleme yapılıyor.
+            // product = command.Adapt<Product>();
 
             product.Name = command.Name;
             product.Category = command.Category;
