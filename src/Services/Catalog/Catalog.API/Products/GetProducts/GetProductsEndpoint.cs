@@ -1,4 +1,3 @@
-
 namespace Catalog.API.Products.GetProducts
 {
     public record GetProductsRequest(int? PageNumber = 1, int? PageSize = 10); // this request input should match with the GetProductsQuery to map correctly
