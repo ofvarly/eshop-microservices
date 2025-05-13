@@ -1,6 +1,6 @@
 ﻿namespace Basket.API.Basket.DeleteBasket
 {
-    public record DeleteBasketRequest(string UserName) : IRequest<DeleteBasketResponse>; // this request input should match with the DeleteBasketCommand to map correctly
+    //public record DeleteBasketRequest(string UserName);
 
     public record DeleteBasketResponse(bool IsSuccess); // this response output should match with the DeleteBasketResult to map correctly
 
@@ -8,9 +8,9 @@
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapDelete("/basket/{username}", async (string UserName, ISender sender) =>
+            app.MapDelete("/basket/{username}", async (string userName, ISender sender) =>
             { 
-                var result = await sender.Send(new DeleteBasketRequest(UserName)); // MediatR
+                var result = await sender.Send(new DeleteBasketCommand(userName)); // MediatR
 
                 var response = result.Adapt<DeleteBasketResponse>(); // Mapster
 
