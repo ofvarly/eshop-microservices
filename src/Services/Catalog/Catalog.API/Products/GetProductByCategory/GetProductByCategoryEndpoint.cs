@@ -1,5 +1,4 @@
-﻿
-namespace Catalog.API.Products.GetProductByCategory
+﻿namespace Catalog.API.Products.GetProductByCategory
 {
     public record GetProductByCategoryResponse(IEnumerable<Product> Products); // this response output should match with the GetProductByCategoryResult to map correctly
    

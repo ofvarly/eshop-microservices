@@ -14,7 +14,7 @@
             if (product is null)
                 throw new ProductNotFoundException(query.Id);
 
-            return new GetProductByIdResult(product); // temp fix
+            return new GetProductByIdResult(product);
         }
     }
 }

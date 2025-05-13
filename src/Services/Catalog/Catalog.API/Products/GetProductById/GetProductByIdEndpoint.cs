@@ -1,6 +1,5 @@
 ﻿namespace Catalog.API.Products.GetProductById
 {
-
     public record GetProductByIdResponse(Product Product); // this response output should match with the GetProductsResult to map correctly
 
     public class GetProductByIdEndpoint : ICarterModule
