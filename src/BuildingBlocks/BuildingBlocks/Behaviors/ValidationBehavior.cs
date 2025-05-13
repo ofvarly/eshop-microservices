@@ -6,7 +6,7 @@ namespace BuildingBlocks.Behaviors
 {
     public class ValidationBehavior<TRequest, TResponse>
         (IEnumerable<IValidator<TRequest>> validators)
-        : IPipelineBehavior<TRequest, TResponse>
+        : IPipelineBehavior<TRequest, TResponse> // IPipelineBehavior is a MediatR interface that allows you to create a behavior that can be applied to all requests
         where TRequest : ICommand<TResponse>
     {
         public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)

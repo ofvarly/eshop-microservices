@@ -1,5 +1,4 @@
-﻿
-namespace Catalog.API.Products.UpdateProduct
+﻿namespace Catalog.API.Products.UpdateProduct
 {
     public record UpdateProductRequest(Guid Id, string Name, List<string> Category, string Description, string ImageFile, decimal Price); // this request input should match with the UpdateProductCommand to map correctly
     public record UpdateProductResponse(bool IsSuccess);
@@ -23,7 +22,6 @@ namespace Catalog.API.Products.UpdateProduct
                 .ProducesProblem(StatusCodes.Status400BadRequest)
                 .WithSummary("Update a product")
                 .WithDescription("Update a product");
-
         }
     }
 }
