@@ -14,6 +14,12 @@ builder.Services.AddMediatR(config =>
 
 builder.Services.AddValidatorsFromAssembly(assembly); // Add FluentValidation for request validation
 
+builder.Services.AddMarten(opts => // Add Marten for data access
+{
+    opts.Connection(builder.Configuration.GetConnectionString("Database")!); // Set the connection string
+    opts.Schema.For<ShoppingCart>().Identity(x => x.UserName);
+}).UseLightweightSessions(); // Use lightweight sessions for better performance
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
