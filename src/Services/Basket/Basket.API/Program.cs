@@ -22,10 +22,13 @@ builder.Services.AddMarten(opts => // Add Marten for data access
 
 builder.Services.AddScoped<IBasketRepository, BasketRepository>(); // Add the repository for data access
 
+builder.Services.AddExceptionHandler<CustomExceptionHandler>(); // Add custom exception handler
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
 app.MapCarter(); // Map Carter routes
+app.UseExceptionHandler(options => { }); // Use custom exception handler
 
 app.Run();
