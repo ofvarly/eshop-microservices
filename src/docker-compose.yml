@@ -11,6 +11,9 @@ services:
     build:
       context: .
       dockerfile: Services/Catalog/Catalog.API/Dockerfile
+   
+  distributedcache:
+    image: redis
 
 volumes:
     postgres_catalog:
