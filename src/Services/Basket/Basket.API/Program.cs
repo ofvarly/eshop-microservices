@@ -21,6 +21,13 @@ builder.Services.AddMarten(opts => // Add Marten for data access
 }).UseLightweightSessions(); // Use lightweight sessions for better performance
 
 builder.Services.AddScoped<IBasketRepository, BasketRepository>(); // Add the repository for data access
+builder.Services.Decorate<IBasketRepository, CachedBasketRepository>(); // Decorate the repository with caching
+
+builder.Services.AddStackExchangeRedisCache(options => // Add Redis cache
+{
+    options.Configuration = builder.Configuration.GetConnectionString("Redis")!;
+    //options.InstanceName = builder.Configuration["Redis:InstanceName"]!;
+});
 
 builder.Services.AddExceptionHandler<CustomExceptionHandler>(); // Add custom exception handler
 
