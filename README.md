@@ -16,17 +16,17 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 * ASP.NET 8 Web API application, Following REST API principles, CRUD
 * Using **Redis** as a **Distributed Cache** over basketdb
 * Implements Proxy, Decorator and Cache-aside patterns
-* Consume Discount **Grpc Service** for inter-service sync communication to calculate product final price
-* Publish BasketCheckout Queue with using **MassTransit and RabbitMQ**
+* TODO: Consume Discount **Grpc Service** for inter-service sync communication to calculate product final price
+* TODO: Publish BasketCheckout Queue with using **MassTransit and RabbitMQ**
   
-#### Discount microservice which includes;
+#### TODO: Discount microservice which includes;
 * ASP.NET **Grpc Server** application
 * Build a Highly Performant **inter-service gRPC Communication** with Basket Microservice
 * Exposing Grpc Services with creating **Protobuf messages**
 * Entity Framework Core ORM — SQLite Data Provider and Migrations to simplify data access and ensure high performance
 * **SQLite database** connection and containerization
 
-#### Microservices Communication
+#### TODO: Microservices Communication
 * Sync inter-service **gRPC Communication**
 * Async Microservices Communication with **RabbitMQ Message-Broker Service**
 * Using **RabbitMQ Publish/Subscribe Topic** Exchange Model
@@ -34,19 +34,19 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 * Publishing BasketCheckout event queue from Basket microservices and Subscribing this event from Ordering microservices	
 * Create **RabbitMQ EventBus.Messages library** and add references Microservices
 
-#### Ordering Microservice
+#### TODO: Ordering Microservice
 * Implementing **DDD, CQRS, and Clean Architecture** with using Best Practices
 * Developing **CQRS with using MediatR, FluentValidation and Mapster packages**
 * Consuming **RabbitMQ** BasketCheckout event queue with using **MassTransit-RabbitMQ** Configuration
 * **SqlServer database** connection and containerization
 * Using **Entity Framework Core ORM** and auto migrate to SqlServer when application startup
 	
-#### Yarp API Gateway Microservice
+#### TODO: Yarp API Gateway Microservice
 * Develop API Gateways with **Yarp Reverse Proxy** applying Gateway Routing Pattern
 * Yarp Reverse Proxy Configuration; Route, Cluster, Path, Transform, Destinations
 * **Rate Limiting** with FixedWindowLimiter on Yarp Reverse Proxy Configuration
 
-#### WebUI ShoppingApp Microservice
+#### TODO: WebUI ShoppingApp Microservice
 * ASP.NET Core Web Application with Bootstrap 4 and Razor template
 * Call **Yarp APIs with Refit HttpClientFactory**
 
