@@ -3,7 +3,8 @@ using Microsoft.Extensions.Caching.Distributed;     // we are not moving them in
 
 namespace Basket.API.Data
 {
-    public class CachedBasketRepository(IBasketRepository repository, IDistributedCache cache)
+    public class CachedBasketRepository
+        (IBasketRepository repository, IDistributedCache cache)
         : IBasketRepository
     {
         public async Task<ShoppingCart> GetBasket(string userName, CancellationToken cancellationToken = default)
